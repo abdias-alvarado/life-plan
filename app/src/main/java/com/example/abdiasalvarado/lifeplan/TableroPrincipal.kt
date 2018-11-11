@@ -79,50 +79,43 @@ class TableroPrincipal : AppCompatActivity() {
      */
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-        override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1)
+        override fun getItem(position: Int): Fragment? {
+           when (position){
+               0 -> {
+                   return TableroActivity()
+               }
+               1 -> {
+                   return MetasActivity()
+               }
+               2 -> {
+                   return AgendaActivity()
+               }
+               3 -> {
+                   return CalendarioActivity()
+               }
+               4 -> {
+                   return RecordatoriosActivity()
+               }
+               else -> return null
+           }
         }
 
         override fun getCount(): Int {
             // Show 3 total pages.
-            return 3
-        }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    class PlaceholderFragment : Fragment() {
-
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val rootView = inflater.inflate(R.layout.fragment_tablero_principal, container, false)
-            rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
-            return rootView
+            return 5
         }
 
-        companion object {
-            /**
-             * The fragment argument representing the section number for this
-             * fragment.
-             */
-            private val ARG_SECTION_NUMBER = "section_number"
-
-            /**
-             * Returns a new instance of this fragment for the given section
-             * number.
-             */
-            fun newInstance(sectionNumber: Int): PlaceholderFragment {
-                val fragment = PlaceholderFragment()
-                val args = Bundle()
-                args.putInt(ARG_SECTION_NUMBER, sectionNumber)
-                fragment.arguments = args
-                return fragment
+        override fun getPageTitle(position: Int): CharSequence? {
+            when(position){
+                0 -> return "TABLERO"
+                1 -> return "METAS"
+                2 -> return "AGENDA"
+                3 -> return "CALENDARIO"
+                4 -> return "RECORDATORIOS"
             }
+            return null
         }
     }
+
+
 }

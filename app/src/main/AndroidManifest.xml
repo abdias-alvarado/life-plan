@@ -15,14 +15,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+
         <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>
 
+        <!--ACTIVIDADES DE FACEBOOK-->
         <activity
                 android:name="com.facebook.FacebookActivity"
                 android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
                 android:label="@string/app_name"/>
+
+
         <activity
                 android:name="com.facebook.CustomTabActivity"
                 android:exported="true">
@@ -35,6 +39,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme"/>
             </intent-filter>
         </activity>
+
+        <!--ACTIVIDAD DE SPLASH-->
         <activity android:name=".InicioActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -46,29 +52,26 @@
                 android:name=".LoginActivity"
                 android:label="@string/title_activity_login">
         </activity>
-        <activity android:name=".CalendarioActivity">
-        </activity>
+
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".AgendaActivity">
-        </activity>
+
         <activity android:name=".RegistrarUsuario">
         </activity>
         <activity android:name=".NuevaActividad">
         </activity>
         <activity android:name=".NuevaMeta">
         </activity>
-        <activity android:name=".RecordatoriosActivity">
-        </activity>
-        <activity android:name=".MetasActivity">
-        </activity>
+
         <activity android:name=".DetalleMeta">
         </activity>
+
         <activity
                 android:name=".TableroPrincipal"
                 android:label="@string/title_activity_tablero_principal"
                 android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
+
     </application>
 
 </manifest>
