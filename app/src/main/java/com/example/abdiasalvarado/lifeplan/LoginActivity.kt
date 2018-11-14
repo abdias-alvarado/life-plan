@@ -24,37 +24,28 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        FacebookSdk.sdkInitialize(applicationContext)
-        AppEventsLogger.activateApp(this)
-
-        val intent= Intent(this, MainActivity::class.java)
+        callbackManager = CallbackManager.Factory.create()
+        val intent= Intent(this, TableroPrincipal::class.java)
 
         var btnLoginFB = findViewById<LoginButton>(R.id.fb_login_button)
 
-        btnLoginFB.setOnClickListener {View.OnClickListener {
-            callbackManager = CallbackManager.Factory.create()
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
-            LoginManager.getInstance().registerCallback(callbackManager,
-                object : FacebookCallback<LoginResult>{
-                    override fun onSuccess(p0: LoginResult?) {
-                        startActivity(intent)
-                    }
+        btnLoginFB.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult?) {
+                startActivity(intent)
+            }
 
-                    override fun onCancel() {
-                        Toast.makeText(applicationContext, "Cancelando Ingreso.", Toast.LENGTH_LONG).show()
-                    }
+            override fun onCancel() {
 
-                    override fun onError(p0: FacebookException?) {
-                        Toast.makeText(applicationContext, "Error de ingreso.", Toast.LENGTH_LONG).show()
-                    }
-                })
+            }
 
-        }}
+            override fun onError(error: FacebookException?) {
 
+            }
+            
+        })
+    }
 
-
-
-
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager?.onActivityResult(requestCode, resultCode, data)
     }
 }

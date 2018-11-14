@@ -32,7 +32,9 @@
         <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:foregroundGravity="bottom">
+                android:layout_height="wrap_content" android:foregroundGravity="bottom"
+                app:tabIndicatorColor="@color/colorPrimary"
+        >
 
             <android.support.design.widget.TabItem
                     android:id="@+id/tabItemTablero"
@@ -76,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email"/>
+            app:srcCompat="@android:drawable/checkbox_on_background" app:backgroundTint="@color/colorPrimary"
+    />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -15,7 +15,7 @@ class InicioActivity : AppCompatActivity() {
                 try {
                     Thread.sleep(7000)
 
-                    val intent = Intent(baseContext, TableroPrincipal::class.java)
+                    val intent = Intent(baseContext, MainActivity::class.java)
                     startActivity(intent)
                 }
                 catch (e: Exception)

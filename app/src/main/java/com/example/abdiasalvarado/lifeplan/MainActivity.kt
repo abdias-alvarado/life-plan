@@ -16,5 +16,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+        else
+        {
+            val intent = Intent(this, TableroPrincipal::class.java)
+            startActivity(intent)
+        }
     }
 }
