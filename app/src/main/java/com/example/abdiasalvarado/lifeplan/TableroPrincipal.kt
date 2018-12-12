@@ -9,26 +9,24 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.example.abdiasalvarado.lifeplan.data.LifePlanDatabase
+import com.example.abdiasalvarado.lifeplan.data.Tabla_Actividades
 
 import kotlinx.android.synthetic.main.activity_tablero_principal.*
 import kotlinx.android.synthetic.main.fragment_tablero_principal.view.*
 
-class TableroPrincipal : AppCompatActivity() {
+class TableroPrincipal : AppCompatActivity(), Adaptador_Actividades.OnTodoItemClickListener {
 
-    /**
-     * The [android.support.v4.view.PagerAdapter] that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * [android.support.v4.app.FragmentStatePagerAdapter].
-     */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
+
+    private var todoDatabase: LifePlanDatabase? = null
+    private var todoAdapter: Adaptador_Actividades? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +43,28 @@ class TableroPrincipal : AppCompatActivity() {
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
+
+//        todoDatabase = LifePlanDatabase.getInstance(this)
+//        todoAdapter = Adaptador_Actividades(todoDatabase?.getTablaActividadesDao()?.consultaActividades())
+//        todoAdapter?.setTodoItemClickListener(this)
+
+
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        todoAdapter?.listaActividades = todoDatabase?.getTablaActividadesDao()?.consultaActividades()
+//        reci.adapter = todoAdapter
+//        rvToDo.layoutManager = LinearLayoutManager(this)
+//        rvToDo.hasFixedSize()
+    }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -115,6 +129,14 @@ class TableroPrincipal : AppCompatActivity() {
             }
             return null
         }
+    }
+
+    override fun onTodoItemClickListener(todo: Tabla_Actividades) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onTodoItemLongClickListener(todo: Tabla_Actividades) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
