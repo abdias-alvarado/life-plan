@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_nueva_actividad.*
 class NuevaActividad : AppCompatActivity() {
 
     private var lifeplanDatabase: LifePlanDatabase? = null
-    private var prioridad = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
