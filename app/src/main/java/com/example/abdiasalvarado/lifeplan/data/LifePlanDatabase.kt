@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
+
 @Database(entities = [Tabla_Actividades::class], version = 1, exportSchema = false)
 abstract class LifePlanDatabase: RoomDatabase() {
     /**

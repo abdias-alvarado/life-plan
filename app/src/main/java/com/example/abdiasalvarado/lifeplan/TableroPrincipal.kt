@@ -1,5 +1,6 @@
 package com.example.abdiasalvarado.lifeplan
 
+import android.content.Intent
 import android.support.design.widget.TabLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -44,22 +45,23 @@ class TableroPrincipal : AppCompatActivity(), Adaptador_Actividades.OnTodoItemCl
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
 
-//        todoDatabase = LifePlanDatabase.getInstance(this)
-//        todoAdapter = Adaptador_Actividades(todoDatabase?.getTablaActividadesDao()?.consultaActividades())
-//        todoAdapter?.setTodoItemClickListener(this)
+        todoDatabase = LifePlanDatabase.getInstance(this)
+        todoAdapter = Adaptador_Actividades(todoDatabase?.getTablaActividadesDao()?.consultaActividades())
+        todoAdapter?.setTodoItemClickListener(this)
 
 
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+            startActivity(Intent(this, NuevaActividad::class.java))
         }
 
     }
 
     override fun onResume() {
         super.onResume()
-        todoAdapter?.listaActividades = todoDatabase?.getTablaActividadesDao()?.consultaActividades()
+//        todoAdapter?.listaActividades = todoDatabase?.getTablaActividadesDao()?.consultaActividades()
 //        reci.adapter = todoAdapter
 //        rvToDo.layoutManager = LinearLayoutManager(this)
 //        rvToDo.hasFixedSize()
@@ -99,6 +101,7 @@ class TableroPrincipal : AppCompatActivity(), Adaptador_Actividades.OnTodoItemCl
                    return TableroActivity()
                }
                1 -> {
+
                    return MetasActivity()
                }
                2 -> {
