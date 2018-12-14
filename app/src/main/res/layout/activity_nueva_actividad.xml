@@ -12,18 +12,42 @@
             android:layout_height="match_parent" android:layout_margin="10dp">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvAgregarActividad"
+                    android:text="@string/txt_nueva_actividad"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" android:gravity="center_horizontal"
+                    android:textStyle="bold"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/etEtiqueta" android:hint="@string/txt_etiqueta"/>
+                    android:id="@+id/etEtiqueta" android:hint="@string/txt_etiqueta" android:layout_marginTop="10dp"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <EditText
+                        android:layout_width="318dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="time"
+                        android:ems="10"
+                        android:id="@+id/etHora" android:hint="@string/txt_hora"/>
+                <android.support.design.widget.FloatingActionButton
+                        android:layout_width="129dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true" app:srcCompat="@drawable/ic_icono_reloj"
+                        android:id="@+id/fabHora" android:layout_weight="1"
+                        app:backgroundTint="@color/colorPrimary"
+                        android:layout_gravity="center_vertical"/>
+            </LinearLayout>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
+                    android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/etHora" android:hint="@string/txt_hora"/>
+                    android:id="@+id/etCategoria" android:hint="Categoría"/>
             <Button
                     android:text="@string/txt_agregar"
                     android:layout_width="match_parent"

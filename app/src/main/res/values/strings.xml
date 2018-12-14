@@ -25,6 +25,7 @@
     <string name="txt_hora">Hora</string>
     <string name="txt_agregar">Agregar</string>
     <string name="txt_cancelar">Cancelar</string>
+    <string name="txt_nueva_actividad">Agregar nueva actividad</string>
 
 
 </resources>

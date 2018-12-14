@@ -6,17 +6,13 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
 
-@Database(entities = [Tabla_Actividades::class], version = 1, exportSchema = false)
+@Database(entities = [Tabla_Actividades::class, Tabla_Recordatorios::class, Tabla_Metas::class], version = 2, exportSchema = false)
 abstract class LifePlanDatabase: RoomDatabase() {
-    /**
-     * Este es un método abstracto que retorna el DAO para la base de datos.
-     */
-    abstract fun getTablaActividadesDao(): Tabla_Actividades_Dao
 
-    /**
-     * Un patrón de diseño Singleton es utilizado para asegurarnos que
-     * solamente se cree una instancia de la base de datos.
-     */
+    abstract fun getTablaActividadesDao(): Tabla_Actividades_Dao
+    abstract fun getTablaRecordatoriosDao(): Tabla_Recordatorios_Dao
+    abstract fun getTablaMetasDao(): Tabla_Metas_Dao
+
     companion object {
         val nombreDatabase = "lifeplan_db"
         var lifePlanDatabase: LifePlanDatabase? = null
