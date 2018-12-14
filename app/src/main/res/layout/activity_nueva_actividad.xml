@@ -42,12 +42,9 @@
                         app:backgroundTint="@color/colorPrimary"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
-            <EditText
+            <Spinner
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/etCategoria" android:hint="Categoría"/>
+                    android:layout_height="43dp" android:id="@+id/sprCategoria"/>
             <Button
                     android:text="@string/txt_agregar"
                     android:layout_width="match_parent"

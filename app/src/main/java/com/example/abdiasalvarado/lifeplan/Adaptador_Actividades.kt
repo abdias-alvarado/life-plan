@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.abdiasalvarado.lifeplan.data.Tabla_Actividades
 
@@ -38,6 +39,7 @@ class Adaptador_Actividades(var listaActividades: List<Tabla_Actividades>? = Arr
         fun onBindViews(position: Int) {
             vista.findViewById<TextView>(R.id.tvTitulo).text = todoList.get(position).etiqueta
             vista.findViewById<TextView>(R.id.tvHora).text = todoList.get(position).hora
+            vista.findViewById<ImageView>(R.id.ivIcono).setImageResource(todoList[position].getImgId())
 
         }
 

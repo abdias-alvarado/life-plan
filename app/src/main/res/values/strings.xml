@@ -26,6 +26,6 @@
     <string name="txt_agregar">Agregar</string>
     <string name="txt_cancelar">Cancelar</string>
     <string name="txt_nueva_actividad">Agregar nueva actividad</string>
-
+    <string name="txt_nueva_meta">Agregar nueva meta</string>
 
 </resources>

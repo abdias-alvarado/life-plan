@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.AlarmClock
 import android.support.v4.app.DialogFragment
 import android.text.Editable
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.abdiasalvarado.lifeplan.data.LifePlanDatabase
 import com.example.abdiasalvarado.lifeplan.data.Tabla_Actividades
@@ -27,18 +28,21 @@ class NuevaActividad : AppCompatActivity() {
             timePicker.show(supportFragmentManager, "SELECTOR HORA")
         }
 
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item,
+            listOf("Ejercicio", "Alimentación", "Académico", "Ocio", "Deportes", "Social", "Otro"))
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        sprCategoria.adapter = adapter
+
         lifeplanDatabase = LifePlanDatabase.getInstance(this)
 
-
-        // Validar si se nos envía el intent con el valor del título
         val etiqueta = intent.getStringExtra("etiqueta")
         val hora = intent.getStringExtra("hora")
         val categoria = intent.getStringExtra("categoria")
 
-        // Si no está definido o viene en blanco, el usuario presionó el FAB
         if (etiqueta == null || etiqueta == "") {
             btnAgregar.setOnClickListener {
-                val actividad = Tabla_Actividades(etEtiqueta.text.toString(), etHora.text.toString() ,etCategoria.text.toString())
+                val actividad = Tabla_Actividades(etEtiqueta.text.toString(), etHora.text.toString() ,sprCategoria.selectedItem.toString())
                 lifeplanDatabase?.getTablaActividadesDao()?.insertarActividad(actividad)
 
 //                var hora = "8"
@@ -52,7 +56,7 @@ class NuevaActividad : AppCompatActivity() {
             etEtiqueta.setText(etiqueta)
             etHora.setText(hora)
             btnAgregar.setOnClickListener {
-                val actividad = Tabla_Actividades(etEtiqueta.text.toString(), etHora.text.toString(), etCategoria.text.toString())
+                val actividad = Tabla_Actividades(etEtiqueta.text.toString(), etHora.text.toString(), sprCategoria.selectedItem.toString())
                 actividad.id = id
                 lifeplanDatabase?.getTablaActividadesDao()?.actualizarActividad(actividad)
 //                var hora = "8"

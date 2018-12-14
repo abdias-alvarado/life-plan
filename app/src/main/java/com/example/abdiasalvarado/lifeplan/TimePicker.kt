@@ -26,7 +26,24 @@ class TimePicker: DialogFragment(), TimePickerDialog.OnTimeSetListener {
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
         // Do something with the returned time
         val et: EditText = activity!!.findViewById(R.id.etHora) as EditText
-        var horaCompleta =  "${getHoraAMPM(hourOfDay)}:$minute ${getAMPM(hourOfDay)}"
+        var horaCompleta: String
+        var horaAMPM =  getHoraAMPM(hourOfDay)
+
+        if(horaAMPM <= 9 && minute <= 9)
+        {
+            horaCompleta =  "0${getHoraAMPM(hourOfDay)}:0$minute ${getAMPM(hourOfDay)}"
+
+        }
+        else if(horaAMPM <= 9){
+            horaCompleta =  "0${getHoraAMPM(hourOfDay)}:$minute ${getAMPM(hourOfDay)}"
+        }
+        else if(minute <= 9){
+            horaCompleta =  "${getHoraAMPM(hourOfDay)}:0$minute ${getAMPM(hourOfDay)}"
+        }
+        else{
+            horaCompleta =  "${getHoraAMPM(hourOfDay)}:$minute ${getAMPM(hourOfDay)}"
+        }
+
         et.setText(horaCompleta)
 
     }

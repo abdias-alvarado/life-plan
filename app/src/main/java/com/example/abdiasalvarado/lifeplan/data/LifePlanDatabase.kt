@@ -6,7 +6,7 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
 
-@Database(entities = [Tabla_Actividades::class, Tabla_Recordatorios::class, Tabla_Metas::class], version = 2, exportSchema = false)
+@Database(entities = [Tabla_Actividades::class, Tabla_Recordatorios::class, Tabla_Metas::class], version = 3, exportSchema = false)
 abstract class LifePlanDatabase: RoomDatabase() {
 
     abstract fun getTablaActividadesDao(): Tabla_Actividades_Dao
