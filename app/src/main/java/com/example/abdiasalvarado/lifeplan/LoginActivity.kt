@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
         btnLoginFB.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
+
                 startActivity(intent)
             }
 

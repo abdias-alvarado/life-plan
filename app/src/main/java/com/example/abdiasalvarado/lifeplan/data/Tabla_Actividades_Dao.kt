@@ -12,6 +12,9 @@ interface Tabla_Actividades_Dao {
     @Query("SELECT * FROM Actividades WHERE id = :id")
     fun consultaActividad(id: Int): Tabla_Actividades
 
+    @Query("SELECT * FROM Actividades  WHERE meta = :meta")
+    fun consultaActividadesPorMeta(meta: String): List<Tabla_Actividades>
+
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertarActividad(actividad: Tabla_Actividades)
@@ -22,4 +25,11 @@ interface Tabla_Actividades_Dao {
 
     @Delete
     fun eliminarActividad(actividad: Tabla_Actividades)
+
+
+    @Query("DELETE FROM Actividades  WHERE meta = :meta")
+    fun eliminarActividadesMeta(meta: String)
+
+    @Query("UPDATE Actividades SET meta = :metanueva WHERE meta = :metavieja")
+    fun actualizarActividadesMeta(metavieja: String, metanueva: String)
 }

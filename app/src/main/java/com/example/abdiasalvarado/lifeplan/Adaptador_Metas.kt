@@ -12,7 +12,7 @@ class Adaptador_Metas(var listaMetas: List<Tabla_Metas>? = ArrayList<Tabla_Metas
 {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): Adaptador_Metas.ViewHolder {
-        val vista = LayoutInflater.from(parent.context).inflate(R.layout.fragment_plantilla_tablero, parent, false)
+        val vista = LayoutInflater.from(parent.context).inflate(R.layout.fragment_plantilla_metas, parent, false)
 
         return ViewHolder(vista, listaMetas!!)
     }
@@ -21,7 +21,7 @@ class Adaptador_Metas(var listaMetas: List<Tabla_Metas>? = ArrayList<Tabla_Metas
         return listaMetas?.count()!!
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: Adaptador_Metas.ViewHolder, position: Int) {
         holder.vista.setOnClickListener{
             onItemMetaClickListener?.onItemMetaClickListener(listaMetas?.get(position)!!)
         }
@@ -32,26 +32,15 @@ class Adaptador_Metas(var listaMetas: List<Tabla_Metas>? = ArrayList<Tabla_Metas
         holder.onBindViews(position)
     }
 
-//    override fun onBindViewHolder(holder: Adaptador_Actividades.ViewHolder, position: Int) {
-//        // Obtener la posición del item clickeado
-//        holder.vista.setOnClickListener{
-//            onItemMetaClickListener?.onItemMetaClickListener(listaMetas?.get(position)!!)
-//        }
-//        holder.vista.setOnLongClickListener{
-//            onItemMetaClickListener?.onItemMetaLongClickListener(listaMetas?.get(position)!!)
-//            true
-//        }
-//        holder.onBindViews(position)
-//    }
-
 
     private var onItemMetaClickListener: OnItemMetaClickListener? = null
 
 
     class ViewHolder(val vista: View, val listaMetas: List<Tabla_Metas>): RecyclerView.ViewHolder(vista) {
         fun onBindViews(position: Int) {
-            vista.findViewById<TextView>(R.id.tvTitulo).text = listaMetas.get(position).etiqueta
-            vista.findViewById<TextView>(R.id.tvHora).text = listaMetas.get(position).fecha_inicio
+            vista.findViewById<TextView>(R.id.tvEtiquetaMeta).text = listaMetas.get(position).etiqueta
+            vista.findViewById<TextView>(R.id.tvFechaInicio).text = listaMetas.get(position).fecha_inicio
+            vista.findViewById<TextView>(R.id.tvFechaFinal).text = listaMetas.get(position).fecha_inicio
 
         }
 

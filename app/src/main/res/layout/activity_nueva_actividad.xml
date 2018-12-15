@@ -33,23 +33,29 @@
                         android:layout_height="wrap_content"
                         android:inputType="time"
                         android:ems="10"
-                        android:id="@+id/etHora" android:hint="@string/txt_hora"/>
+                        android:id="@+id/etHora" android:hint="@string/txt_hora" android:layout_marginTop="10dp"/>
                 <android.support.design.widget.FloatingActionButton
-                        android:layout_width="129dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true" app:srcCompat="@drawable/ic_icono_reloj"
                         android:id="@+id/fabHora" android:layout_weight="1"
                         app:backgroundTint="@color/colorPrimary"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvCategoria"/>
             <Spinner
                     android:layout_width="match_parent"
-                    android:layout_height="43dp" android:id="@+id/sprCategoria"/>
+                    android:layout_height="43dp" android:id="@+id/sprCategoria" android:layout_marginTop="10dp"/>
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp" android:id="@+id/sprMeta" android:layout_marginTop="10dp"/>
             <Button
                     android:text="@string/txt_agregar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/btnAgregar"
-                    android:background="@drawable/borde_redondo" android:layout_margin="5dp"/>
+                    android:background="@drawable/borde_redondo" android:layout_margin="10dp"/>
             <Button
                     android:text="@string/txt_cancelar"
                     android:layout_width="match_parent"

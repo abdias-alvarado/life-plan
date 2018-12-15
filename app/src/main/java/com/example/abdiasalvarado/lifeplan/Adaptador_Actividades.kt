@@ -11,7 +11,7 @@ import com.example.abdiasalvarado.lifeplan.data.Tabla_Actividades
 
 class Adaptador_Actividades(var listaActividades: List<Tabla_Actividades>? = ArrayList<Tabla_Actividades>()): RecyclerView.Adapter<Adaptador_Actividades.ViewHolder>()
 {
-    private var onActividadItemClickListener: OnTodoItemClickListener? = null
+    private var onItemActividadClickListener: OnItemActividadClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): Adaptador_Actividades.ViewHolder {
         val vista = LayoutInflater.from(parent.context).inflate(R.layout.fragment_plantilla_tablero, parent, false)
@@ -26,10 +26,10 @@ class Adaptador_Actividades(var listaActividades: List<Tabla_Actividades>? = Arr
     override fun onBindViewHolder(holder: Adaptador_Actividades.ViewHolder, position: Int) {
         // Obtener la posición del item clickeado
         holder.vista.setOnClickListener{
-            onActividadItemClickListener?.onTodoItemClickListener(listaActividades?.get(position)!!)
+            onItemActividadClickListener?.onItemActividadClickListener(listaActividades?.get(position)!!)
         }
         holder.vista.setOnLongClickListener{
-            onActividadItemClickListener?.onTodoItemLongClickListener(listaActividades?.get(position)!!)
+            onItemActividadClickListener?.onItemActividadLongClickListener(listaActividades?.get(position)!!)
             true
         }
         holder.onBindViews(position)
@@ -46,19 +46,12 @@ class Adaptador_Actividades(var listaActividades: List<Tabla_Actividades>? = Arr
 
     }
 
-    /**
-     * Utilizamos un método en lugar de asignar la funcionalidad vía el constructor
-     * de la clase principal para mayor comodidad al momento de sobreescribir la funcionalidad.
-     */
-    fun setTodoItemClickListener(onTodoItemClickListener: OnTodoItemClickListener) {
-        this.onActividadItemClickListener = onTodoItemClickListener
+    fun setTodoItemClickListener(onItemActividadClickListener: OnItemActividadClickListener) {
+        this.onItemActividadClickListener = onItemActividadClickListener
     }
 
-    /**
-     * Definimos la interface que permite extender métodos que el RecyclerView no posee
-     */
-    interface OnTodoItemClickListener {
-        fun onTodoItemClickListener(todo: Tabla_Actividades)
-        fun onTodoItemLongClickListener(todo: Tabla_Actividades)
+    interface OnItemActividadClickListener {
+        fun onItemActividadClickListener(actividad: Tabla_Actividades)
+        fun onItemActividadLongClickListener(actividad: Tabla_Actividades)
     }
 }

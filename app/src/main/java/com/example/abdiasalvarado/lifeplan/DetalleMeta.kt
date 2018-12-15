@@ -9,22 +9,25 @@ import android.widget.Toast
 import com.example.abdiasalvarado.lifeplan.data.LifePlanDatabase
 import com.example.abdiasalvarado.lifeplan.data.Tabla_Actividades
 import kotlinx.android.synthetic.main.activity_detalle_meta.*
+import kotlinx.android.synthetic.main.fragment_plantilla_metas.*
 
-class DetalleMeta : AppCompatActivity(), Adaptador_Actividades.OnTodoItemClickListener{
+class DetalleMeta : AppCompatActivity(), Adaptador_Actividades.OnItemActividadClickListener{
 
 
-    private var todoDatabase: LifePlanDatabase? = null
-    private var todoAdapter: Adaptador_Actividades? = null
+    private var lifePlanDatabase: LifePlanDatabase? = null
+    private var actividadesAdapter: Adaptador_Actividades? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_meta)
 
-        todoDatabase = LifePlanDatabase.getInstance(this)
-        todoAdapter = Adaptador_Actividades(todoDatabase?.getTablaActividadesDao()?.consultaActividades())
-        todoAdapter?.setTodoItemClickListener(this)
+        var meta = intent.getStringExtra("etiqueta")
 
-        btnAgregar.setOnClickListener {
+        lifePlanDatabase = LifePlanDatabase.getInstance(this)
+        actividadesAdapter = Adaptador_Actividades(lifePlanDatabase?.getTablaActividadesDao()?.consultaActividadesPorMeta(meta))
+        actividadesAdapter?.setTodoItemClickListener(this)
+
+        fabAgregar.setOnClickListener {
             startActivity(Intent(this, NuevaActividad::class.java))
         }
 
@@ -33,15 +36,16 @@ class DetalleMeta : AppCompatActivity(), Adaptador_Actividades.OnTodoItemClickLi
 
     override fun onResume() {
         super.onResume()
-        todoAdapter?.listaActividades = todoDatabase?.getTablaActividadesDao()?.consultaActividades()
-        rvActividades_Meta.adapter = todoAdapter
+        var meta = intent.getStringExtra("etiqueta")
+        actividadesAdapter?.listaActividades = lifePlanDatabase?.getTablaActividadesDao()?.consultaActividadesPorMeta(meta)
+        rvActividades_Meta.adapter = actividadesAdapter
         rvActividades_Meta.layoutManager = LinearLayoutManager(this)
         rvActividades_Meta.hasFixedSize()
     }
 
 
 
-    override fun onTodoItemClickListener(actividad: Tabla_Actividades) {
+    override fun onItemActividadClickListener(actividad: Tabla_Actividades) {
         val intent = Intent(this, NuevaActividad::class.java)
         intent.putExtra("id", actividad.id)
         intent.putExtra("etiqueta", actividad.etiqueta)
@@ -49,7 +53,7 @@ class DetalleMeta : AppCompatActivity(), Adaptador_Actividades.OnTodoItemClickLi
         startActivity(intent)
     }
 
-    override fun onTodoItemLongClickListener(actividad: Tabla_Actividades) {
+    override fun onItemActividadLongClickListener(actividad: Tabla_Actividades) {
         // Inicializar una nueva instancia de AlertDialog
         val builder = AlertDialog.Builder(this)
 
@@ -71,7 +75,7 @@ class DetalleMeta : AppCompatActivity(), Adaptador_Actividades.OnTodoItemClickLi
         }
 
         builder.setNegativeButton("Eliminar") {dialog, which ->
-            todoDatabase?.getTablaActividadesDao()?.eliminarActividad(actividad)
+            lifePlanDatabase?.getTablaActividadesDao()?.eliminarActividad(actividad)
             onResume()
             Toast.makeText(this, "Actividad eliminada.", Toast.LENGTH_SHORT).show()
         }

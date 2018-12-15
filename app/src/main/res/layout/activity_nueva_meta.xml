@@ -29,43 +29,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <EditText
-                        android:layout_width="318dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:inputType="time"
+                        android:inputType="date"
                         android:ems="10"
-                        android:id="@+id/etFechaInicio" android:hint="Fecha inicio"/>
-                <android.support.design.widget.FloatingActionButton
-                        android:layout_width="129dp"
-                        android:layout_height="wrap_content"
-                        android:clickable="true" app:srcCompat="@drawable/ic_icono_calendario_white"
-                        android:id="@+id/fabFechaInicio" android:layout_weight="1"
-                        app:backgroundTint="@color/colorPrimary"
-                        android:layout_gravity="center_vertical"/>
+                        android:id="@+id/etFechaInicio" android:layout_weight="1" android:hint="Fecha inicio"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <EditText
-                        android:layout_width="318dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:inputType="time"
+                        android:inputType="date"
                         android:ems="10"
-                        android:id="@+id/etFechaFinal" android:hint="Fecha final"/>
-                <android.support.design.widget.FloatingActionButton
-                        android:layout_width="129dp"
-                        android:layout_height="wrap_content"
-                        android:clickable="true" app:srcCompat="@drawable/ic_icono_calendario_white"
-                        android:id="@+id/fabFechaFinal" android:layout_weight="1"
-                        app:backgroundTint="@color/colorPrimary"
-                        android:layout_gravity="center_vertical"/>
+                        android:id="@+id/etFechaFinal" android:layout_weight="1" android:hint="Fecha final"/>
             </LinearLayout>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/etCategoria" android:hint="Categoría"/>
             <Button
                     android:text="@string/txt_agregar"
                     android:layout_width="match_parent"

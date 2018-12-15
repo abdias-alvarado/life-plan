@@ -11,16 +11,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        if (AccessToken.getCurrentAccessToken() == null)
-//        {
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//        }
-//        else
-//        {
-//            val intent = Intent(this, TableroPrincipal::class.java)
-//            startActivity(intent)
-//        }
-        startActivity(Intent(this, DetalleMeta::class.java))
+        if (AccessToken.getCurrentAccessToken() == null)
+        {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        else
+        {
+            val intent = Intent(this, TableroPrincipal::class.java)
+            startActivity(intent)
+        }
+
     }
 }
